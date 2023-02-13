@@ -1,0 +1,111 @@
+[versions]
+accompanist = "0.28.0"
+android-gradle-plugin = "7.4.0"
+androidx-activity-compose = "1.6.1"
+androidx-appcompat = "1.6.0"
+androidx-corektx = "1.9.0"
+androidx-lifecycle = "2.6.0-alpha05"
+androidx-navigation = "2.5.3"
+androidx-hilt-navigation-compose = "1.0.0"
+
+build-tools = "30.0.3"
+
+compileSdk = "33"
+compose = "1.4.0-beta01"
+composeCompiler = "1.4.2"
+kotlin = "1.8.10"
+coroutines = "1.6.4"
+coil = "2.2.0"
+
+hilt = "2.43.2"
+hiltExt = "1.0.0"
+
+material = "1.9.0-alpha01"
+
+[libraries]
+compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
+compose-ui-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-ui-util = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+compose-foundation-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "compose" }
+compose-material-material = { module = "androidx.compose.material:material", version.ref = "compose" }
+compose-material-iconsext = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
+compose-animation-animation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
+
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-corektx" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
+androidx-fragment = "androidx.fragment:fragment-ktx:1.5.1"
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidx-hilt-navigation-compose" }
+
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+
+coil-coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+
+google-android-material = { module = "com.google.android.material:material", version.ref = "material" }
+
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+hilt-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
+
+
+[bundles]
+compose = [
+    "compose-runtime",
+    "compose-ui-ui",
+    "compose-ui-util",
+    "compose-ui-tooling",
+    "compose-ui-tooling-preview",
+    "compose-foundation-foundation",
+    "compose-foundation-layout",
+    "compose-material-material",
+    "compose-material-iconsext",
+    "compose-animation-animation",
+]
+
+androidx = [
+    "androidx-appcompat",
+    "androidx-core",
+    "androidx-activity-compose",
+    "androidx-fragment",
+    "androidx-lifecycle-runtime",
+    "androidx-lifecycle-viewmodel-compose",
+    "androidx-lifecycle-viewmodel-ktx",
+    "androidx-navigation-compose",
+]
+
+google = [
+    "google-android-material",
+]
+
+kotlin = [
+    "kotlin-stdlib",
+    "kotlin-coroutines-android",
+]
+
+coil = [
+    "coil-coil",
+    "coil-compose",
+]
+
+hilt = [
+    "hilt-android"
+]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
