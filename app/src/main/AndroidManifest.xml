@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.goofy.goober.androidtemplate">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name=".ui.TemplateApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTemplate">
         <activity
-            android:name=".ui.TemplateActivity"
+            android:name=".ui.ShaderCollectionActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.AndroidTemplate.NoActionBar"
             android:exported="true">

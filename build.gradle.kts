@@ -1,8 +1,8 @@
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.application).apply(false)
     alias(libs.plugins.kotlin.android).apply(false)
-    alias(libs.plugins.hilt.android).apply(false)
-    alias(libs.plugins.kapt).apply(false)
+    id("com.android.library") version "7.4.0" apply false
 }
 
 buildscript {
@@ -14,7 +14,6 @@ buildscript {
     dependencies {
         classpath(libs.android.gradle.plugin)
         classpath(libs.kotlin.gradle.plugin)
-        classpath(libs.hilt.gradle.plugin)
     }
 }
 

@@ -1,17 +1,16 @@
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.hilt.android)
-    alias(libs.plugins.kapt)
 }
 
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
     buildToolsVersion = libs.versions.build.tools.get()
-    namespace = "com.goofy.goober.androidtemplate"
+    namespace = "com.goofy.goober.shady"
 
     defaultConfig {
-        applicationId = "com.goofy.goober.androidtemplate"
+        applicationId = "com.goofy.goober.shady"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -54,20 +53,20 @@ android {
 }
 
 dependencies {
+//    implementation(projects.shaders)
+
     implementation(libs.bundles.androidx)
-    implementation(libs.bundles.coil)
     implementation(libs.bundles.compose)
-    implementation(libs.bundles.hilt)
     implementation(libs.bundles.kotlin)
     implementation(libs.bundles.google)
 
-    kapt(libs.hilt.compiler)
+    debugImplementation(libs.compose.ui.tooling)
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
-        freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.Experimental"
+        freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.ExperimentalCoroutinesApi"
     }
 }
