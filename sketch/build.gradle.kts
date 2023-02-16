@@ -1,13 +1,13 @@
 @file:Suppress("UnstableApiUsage")
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     id("com.android.library")
     alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "com.goofy.goober.sketch"
+    namespace = "com.goofy.goober.shaders"
     compileSdk = 33
 
     defaultConfig {

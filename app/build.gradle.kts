@@ -1,17 +1,21 @@
+@file:Suppress("UnstableApiUsage")
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
 
+val appId = "com.goofy.goober.shady"
+
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
     buildToolsVersion = libs.versions.build.tools.get()
-    namespace = "com.goofy.goober.shady"
+    namespace = appId
 
     defaultConfig {
-        applicationId = "com.goofy.goober.shady"
-        minSdk = 24
+        applicationId = appId
+        minSdk = 33
         targetSdk = 33
         versionCode = 1
         versionName = "1.0.0"
@@ -19,12 +23,8 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        getByName("debug") {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android.txt"),
-                "consumer-rules.pro"
-            )
         }
     }
 
@@ -53,7 +53,9 @@ android {
 }
 
 dependencies {
-//    implementation(projects.shaders)
+    implementation(project(":shaders"))
+    implementation(project(":sketch"))
+    implementation(project(":style"))
 
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.compose)
@@ -66,7 +68,7 @@ dependencies {
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         jvmTarget = "1.8"
-        freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
-        freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.ExperimentalCoroutinesApi"
+        freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs = freeCompilerArgs + "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
     }
 }

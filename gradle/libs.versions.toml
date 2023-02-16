@@ -1,21 +1,23 @@
 [versions]
+accompanist= "0.29.1-alpha"
 android-gradle-plugin = "7.4.0"
 androidx-activity-compose = "1.6.1"
-androidx-appcompat = "1.6.0"
-androidx-corektx = "1.9.0"
-androidx-lifecycle = "2.6.0-alpha05"
+androidx-appcompat = "1.6.1"
+androidx-corektx = "1.10.0-alpha02"
+androidx-lifecycle = "2.6.0-beta01"
 androidx-navigation = "2.5.3"
 androidx-hilt-navigation-compose = "1.0.0"
 
 build-tools = "30.0.3"
 
 compileSdk = "33"
-compose = "1.4.0-beta01"
+compose = "1.4.0-alpha02"
 composeCompiler = "1.4.2"
 kotlin = "1.8.10"
 coroutines = "1.6.4"
 
 material = "1.9.0-alpha01"
+compose-material3 = "1.1.0-alpha06"
 
 [libraries]
 compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
@@ -25,7 +27,7 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "compose" }
-compose-material-material = { module = "androidx.compose.material:material", version.ref = "compose" }
+compose-material-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
 compose-material-iconsext = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
 compose-animation-animation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
 
@@ -43,6 +45,7 @@ kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
 google-android-material = { module = "com.google.android.material:material", version.ref = "material" }
+google-accompanist-systemui = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -55,7 +58,7 @@ compose = [
     "compose-ui-tooling-preview",
     "compose-foundation-foundation",
     "compose-foundation-layout",
-    "compose-material-material",
+    "compose-material-material3",
     "compose-material-iconsext",
     "compose-animation-animation",
 ]
@@ -73,6 +76,7 @@ androidx = [
 
 google = [
     "google-android-material",
+    "google-accompanist-systemui",
 ]
 
 kotlin = [

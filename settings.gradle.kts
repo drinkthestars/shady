@@ -1,8 +1,6 @@
-rootProject.name = "android-template"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-include(":app")
-
-include(":shaders")
+rootProject.name = "shady"
 
 pluginManagement {
     repositories {
@@ -11,3 +9,8 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+include(":app")
+include(":shaders")
+include(":sketch")
+include(":style")
