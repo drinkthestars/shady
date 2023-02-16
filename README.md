@@ -1,4 +1,4 @@
-# Shady
+# 🕶 Shady
 
 ![build](https://github.com/drinkthestars/android-template/actions/workflows/android.yml/badge.svg)
 
@@ -7,11 +7,11 @@ The shaders range widely from fun to functional, and can be used as standalone e
 
 It's very WIP 🚧
 
-## The Shaders
+## 🖌 The Shaders
 
 Some shaders are ports from [Shadertoy](https://www.shadertoy.com/), or otherwise ported from WebGL/GLSL.
 Other shaders were originall written in SKSL, and then slightly tweaked for AGSL.
 
-## Usage
+## 📄 Usage
 
 ⏳ Coming soon
