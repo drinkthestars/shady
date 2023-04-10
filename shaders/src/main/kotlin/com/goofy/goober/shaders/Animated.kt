@@ -1,20 +1,16 @@
 import android.graphics.RuntimeShader
-import android.os.Build
-import androidx.annotation.RequiresApi
 
-
-val gradientShader = RuntimeShader(
+val GradientShader = RuntimeShader(
     """
         uniform float2 resolution;
-//        uniform float iTime;
+        uniform float iTime;
         
         vec4 main(vec2 fragCoord) {
             // Normalized pixel coordinates (from 0 to 1)
             vec2 uv = fragCoord/resolution.xy;
     
             // Time varying pixel color
-            vec3 col = 0.8 + 0.2
-//*cos(iTime*2.0+uv.xxx*2.0+vec3(1,2,4));
+            vec3 col = 0.8 + 0.2 * cos(iTime*2.0+uv.xxx*2.0+vec3(1,2,4));
     
             // Output to screen
             return vec4(col,1.0);
@@ -22,8 +18,7 @@ val gradientShader = RuntimeShader(
     """
 )
 
-
-internal fun noodleZoomShader() = RuntimeShader(
+val NoodleZoomShader = RuntimeShader(
     """
         uniform float2 resolution;
         uniform float iTime;
@@ -48,7 +43,7 @@ internal fun noodleZoomShader() = RuntimeShader(
 )
 
 
-private fun warpSpeedShader() = RuntimeShader(
+val WarpSpeedShader = RuntimeShader(
     """
         // 'Warp Speed 2'
         // David Hoskins 2015.
@@ -82,7 +77,7 @@ private fun warpSpeedShader() = RuntimeShader(
 )
 
 
-private fun lightScatteringShader() = RuntimeShader(
+val LightScatteringShader = RuntimeShader(
     """
         uniform float2 resolution;      // Viewport resolution (pixels)
         uniform float  iTime;            // Shader playback time (s)
