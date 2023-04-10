@@ -152,7 +152,7 @@ fun ShadyContainer(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .weight(0.7f)
+                .weight(0.8f)
                 .padding(Space.Five)
                 .clip(LargeCardShape)
                 .background(color = MaterialTheme.colorScheme.surfaceVariant),
@@ -163,16 +163,22 @@ fun ShadyContainer(
                 .fillMaxWidth()
                 .padding(vertical = Space.Five)
         )
-        Column(
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .verticalScroll(rememberScrollState())
+                .fillMaxSize()
+                .weight(0.2f)
                 .padding(horizontal = Space.Five),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            content = controls
-        )
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = Space.Five)
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+                content = controls
+            )
+        }
     }
 }
 

@@ -7,6 +7,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asComposeRenderEffect
@@ -63,6 +67,9 @@ fun MarbledTexture(modifier: Modifier = Modifier) {
 
 @Composable
 fun PaperTexture(modifier: Modifier = Modifier) {
+    var grain by remember { mutableStateOf(0.05f) }
+    var fiber by remember { mutableStateOf(0.5f) }
+
     ShadyContainer(
         modifier = modifier,
         content = {
@@ -77,6 +84,8 @@ fun PaperTexture(modifier: Modifier = Modifier) {
                         )
                     }
                     .graphicsLayer {
+                        PaperTexture.setFloatUniform("grainIntensity", grain)
+                        PaperTexture.setFloatUniform("fiberIntensity", fiber)
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
                                 PaperTexture,
@@ -89,15 +98,33 @@ fun PaperTexture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-//            Slider()
-//            Spacer(modifier = Modifier.height(24.dp))
-//            Slider()
+            Slider(
+                label = "Grain = $grain",
+                value = grain,
+                onValueChange = {
+                    grain = it
+                },
+                valueRange = 0f..1f
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            Slider(
+                label = "Fiber = $fiber",
+                value = fiber,
+                onValueChange = {
+                    fiber = it
+                },
+                valueRange = 0f..1f
+            )
+            Spacer(modifier = Modifier.height(24.dp))
         }
     )
 }
 
 @Composable
 fun NoiseGrain2Texture(modifier: Modifier = Modifier) {
+
+    var intensity by remember { mutableStateOf(0.2f) }
+
     ShadyContainer(
         modifier = modifier,
         content = {
@@ -112,6 +139,7 @@ fun NoiseGrain2Texture(modifier: Modifier = Modifier) {
                         )
                     }
                     .graphicsLayer {
+                        NoiseGrain2.setFloatUniform("intensity", intensity)
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
                                 NoiseGrain2,
@@ -124,15 +152,24 @@ fun NoiseGrain2Texture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-//            Slider()
-//            Spacer(modifier = Modifier.height(24.dp))
-//            Slider()
+            Slider(
+                label = "Intensity = $intensity",
+                value = intensity,
+                onValueChange = {
+                    intensity = it
+                },
+                valueRange = 0f..1f
+            )
+            Spacer(modifier = Modifier.height(24.dp))
         }
     )
 }
 
 @Composable
 fun NoiseGrain1Texture(modifier: Modifier = Modifier) {
+
+    var intensity by remember { mutableStateOf(0.15f) }
+
     ShadyContainer(
         modifier = modifier,
         content = {
@@ -147,6 +184,7 @@ fun NoiseGrain1Texture(modifier: Modifier = Modifier) {
                         )
                     }
                     .graphicsLayer {
+                        NoiseGrain1.setFloatUniform("intensity", intensity)
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
                                 NoiseGrain1,
@@ -159,15 +197,25 @@ fun NoiseGrain1Texture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-//            Slider()
-//            Spacer(modifier = Modifier.height(24.dp))
-//            Slider()
+            Slider(
+                label = "Intensity = $intensity",
+                value = intensity,
+                onValueChange = {
+                    intensity = it
+                },
+                valueRange = 0f..1f
+            )
+            Spacer(modifier = Modifier.height(24.dp))
         }
     )
 }
 
 @Composable
 fun RisographTexture(modifier: Modifier = Modifier) {
+
+    var randomization by remember { mutableStateOf(0.15f) }
+    var randomizationOffset by remember { mutableStateOf(0.16f) }
+
     ShadyContainer(
         modifier = modifier,
         content = {
@@ -182,6 +230,8 @@ fun RisographTexture(modifier: Modifier = Modifier) {
                         )
                     }
                     .graphicsLayer {
+                        Risograph.setFloatUniform("randomization", randomization)
+                        Risograph.setFloatUniform("randomizationOffset", randomizationOffset)
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
                                 Risograph,
@@ -194,15 +244,35 @@ fun RisographTexture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-//            Slider()
-//            Spacer(modifier = Modifier.height(24.dp))
-//            Slider()
+            Slider(
+                label = "Contrast 1 = $randomization",
+                value = randomization,
+                onValueChange = {
+                    randomization = it
+                },
+                valueRange = 0.07f..0.8f
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            Slider(
+                label = "Contrast 2 = $randomizationOffset",
+                value = randomizationOffset,
+                onValueChange = {
+                    randomizationOffset = it
+                },
+                valueRange = 0.0f..0.28f
+            )
+            Spacer(modifier = Modifier.height(24.dp))
         }
     )
 }
 
 @Composable
 fun SketchingPaperTexture(modifier: Modifier = Modifier) {
+
+    var amount by remember { mutableStateOf(0.15f) }
+    var contrast1 by remember { mutableStateOf(2.0f) }
+    var contrast2 by remember { mutableStateOf(2.0f) }
+
     ShadyContainer(
         modifier = modifier,
         content = {
@@ -217,6 +287,9 @@ fun SketchingPaperTexture(modifier: Modifier = Modifier) {
                         )
                     }
                     .graphicsLayer {
+                        SketchingPaperTexture.setFloatUniform("amount", amount)
+                        SketchingPaperTexture.setFloatUniform("contrast1", contrast1)
+                        SketchingPaperTexture.setFloatUniform("contrast2", contrast2)
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
                                 SketchingPaperTexture,
@@ -229,9 +302,33 @@ fun SketchingPaperTexture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-//            Slider()
-//            Spacer(modifier = Modifier.height(24.dp))
-//            Slider()
+            Slider(
+                label = "Contrast 1 = $contrast1",
+                value = contrast1,
+                onValueChange = {
+                    contrast1 = it
+                },
+                valueRange = 2.0f..9.0f
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            Slider(
+                label = "Contrast 2 = $contrast2",
+                value = contrast2,
+                onValueChange = {
+                    contrast2 = it
+                },
+                valueRange = 2.0f..9.0f
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            Slider(
+                label = "Amount = $amount",
+                value = amount,
+                onValueChange = {
+                    amount = it
+                },
+                valueRange = 0f..1.2f
+            )
+            Spacer(modifier = Modifier.height(24.dp))
         }
     )
 }

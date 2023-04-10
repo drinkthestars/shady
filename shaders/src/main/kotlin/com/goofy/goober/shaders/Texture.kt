@@ -8,6 +8,7 @@ val NoiseGrain1 = RuntimeShader(
     """
     uniform float2 resolution;
     uniform shader contents; 
+    uniform float intensity;
     
     vec4 main( vec2 fragCoord )
     {
@@ -18,7 +19,7 @@ val NoiseGrain1 = RuntimeShader(
             return vec4(contents.eval(fragCoord));
         }
 
-        float mdf = -0.8 * 0.1; // increase for noise amount 
+        float mdf = -0.8 * intensity; // increase for noise amount 
         float noise = (fract(sin(dot(uv, vec2(12.9898,78.233)*2.0)) * 43758.5453));
         vec4 tex = vec4(contents.eval(fragCoord));
         
@@ -35,7 +36,8 @@ val NoiseGrain1 = RuntimeShader(
 val NoiseGrain2 = RuntimeShader(
     """
     uniform float2 resolution;
-    uniform shader contents; 
+    uniform shader contents;
+    uniform float intensity;
     
     float random( vec2 p )
     {
@@ -43,7 +45,7 @@ val NoiseGrain2 = RuntimeShader(
             23.14069263277926, // e^pi (Gelfond's constant)
             2.665144142690225 // 2^sqrt(2) (Gelfond–Schneider constant)
         );
-        return fract( cos( dot(p,K1) ) * 43758.5453 );
+        return fract( cos( dot(p,K1) ) * 43758.5453 ); // 43758.5453
     }
     
     vec4 main( vec2 fragCoord )  {
@@ -59,7 +61,7 @@ val NoiseGrain2 = RuntimeShader(
         float amount = 0.2;
         uvRandom.y *= random(vec2(uvRandom.y,amount));
         vec4 tex = vec4(contents.eval(fragCoord));
-        tex.rgb += random(uvRandom)*0.15;
+        tex.rgb += random(uvRandom)*intensity;
     
         return vec4(tex);
     }
@@ -72,6 +74,8 @@ val Risograph = RuntimeShader(
     """
     uniform float2 resolution;
     uniform shader contents; 
+    uniform float randomization;
+    uniform float randomizationOffset;
     
     float random( vec2 p )
     {
@@ -102,7 +106,7 @@ val Risograph = RuntimeShader(
         uvRandom.y *= noise(vec2(uvRandom.y,amount));
         vec4 tex = vec4(contents.eval(fragCoord));
         vec4 originalTex = tex;
-        tex.rgb += random(uvRandom) * 0.15 + 0.16;
+        tex.rgb += random(uvRandom) * randomization + randomizationOffset;
       
         
         float r = max(tex.r, originalTex.r);
@@ -193,7 +197,10 @@ val SketchingPaperTexture = RuntimeShader(
     """
         uniform float2 resolution;
         uniform shader contents; 
-      
+        uniform float contrast1;
+        uniform float contrast2;
+        uniform float amount; // 0.15
+
         float mod289(float x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
         float2 mod289(float2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
         float3 mod289(float3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -239,17 +246,17 @@ val SketchingPaperTexture = RuntimeShader(
         
             // Generate Simplex noise
             float noise = snoise(uv * 200.0) * 0.5 + 0.5;
-            noise = pow(noise, 2.0); // Increase contrast
+            noise = pow(noise, contrast1); // Increase contrast
         
             // Create a dot pattern
             float dotPattern = (sin(uv.x * 800.0) * sin(uv.y * 800.0)) * 0.5 + 0.5;
-            dotPattern = pow(dotPattern, 2.0); // Increase contrast
+            dotPattern = pow(dotPattern, contrast2); // Increase contrast
         
             // Combine the noise and dot pattern
             float combinedTexture = mix(noise, dotPattern, 0.6);
         
             // Apply the texture to the base color
-            half4 outputColor = baseColor + half4(combinedTexture, combinedTexture, combinedTexture, 0.0) * 0.15;
+            half4 outputColor = baseColor + half4(combinedTexture, combinedTexture, combinedTexture, 0.0) * amount;
         
             return outputColor;
         }
@@ -260,6 +267,8 @@ val PaperTexture = RuntimeShader(
     """
     uniform float2 resolution;
     uniform shader contents; 
+    uniform float grainIntensity; // 0.05
+    uniform float fiberIntensity; // 0.5
 
     vec4 noise2(vec2 uv) {
       vec4 n = vec4(fract(sin(dot(uv.xy, vec2(12.9894234,78.23342343))) * 43758.5453));
@@ -274,9 +283,9 @@ val PaperTexture = RuntimeShader(
           return vec4(contents.eval(fragCoord));
       }
       
-      vec4 grain = vec4(noise2(fragCoord * 10.0).r - 0.5);
-      vec4 fiber = vec4(noise2(uv * 20.0).g - 0.5);
-      vec4 dots = vec4(noise2(fragCoord * 30.0).b - 0.5);
+      vec4 grain = vec4(noise2(uv * 12.0).r - 0.5);
+      vec4 fiber = vec4(noise2(uv * 23.0).g - 0.5);
+      vec4 dots = vec4(noise2(uv * 30.0).b - 0.5);
       
       vec4 randomSpecs = vec4(0.0, 0.0, 0.0, 0.0);
       if (fract(dots.x * 10.0) > 0.8) {
@@ -295,8 +304,8 @@ val PaperTexture = RuntimeShader(
       }
       
       return min(vec4(contents.eval(fragCoord)) 
-        + grain * 0.05 
-        + fiber * 0.5
+        + grain * grainIntensity
+        + fiber * fiberIntensity
         + randomSpecs, squigglyFibers);
     }
 """.trimIndent()
