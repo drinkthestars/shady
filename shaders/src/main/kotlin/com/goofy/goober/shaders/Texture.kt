@@ -3,7 +3,9 @@ package com.goofy.goober.shaders
 import android.graphics.RuntimeShader
 import org.intellij.lang.annotations.Language
 
-// Shadertoy
+/**
+ * Tweaked from: https://www.shadertoy.com/view/3sGGRz Created by terchapone
+ */
 val NoiseGrain1 = RuntimeShader(
     """
     uniform float2 resolution;
@@ -32,7 +34,10 @@ val NoiseGrain1 = RuntimeShader(
     """.trimIndent()
 )
 
-// https://simonharris.co/making-a-noise-film-grain-post-processing-effect-from-scratch-in-threejs/
+/**
+ * Tweaked from:
+ * https://simonharris.co/making-a-noise-film-grain-post-processing-effect-from-scratch-in-threejs/
+ */
 val NoiseGrain2 = RuntimeShader(
     """
     uniform float2 resolution;
@@ -68,8 +73,12 @@ val NoiseGrain2 = RuntimeShader(
     """.trimIndent()
 )
 
-// Lighter grain by varying the * 0.15 + 0.16 coefficients
-// https://github.com/Robpayot/risograph-grain-shader/blob/master/src/demo1/js/shaders/grain.frag
+/**
+ * Lighter grain by varying the * 0.15 + 0.16 coefficients
+ *
+ * Tweaked from:
+ * https://github.com/Robpayot/risograph-grain-shader/blob/master/src/demo1/js/shaders/grain.frag
+ */
 val Risograph = RuntimeShader(
     """
     uniform float2 resolution;
@@ -119,6 +128,12 @@ val Risograph = RuntimeShader(
     """.trimIndent()
 )
 
+/**
+ * Messing around from other shaders here plus other references:
+ * - ChatGPT
+ * - https://lygia.xyz/
+ * - https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83 by patriciogonzalezvivo
+ */
 val MarbledTexture = RuntimeShader(
     """
         uniform float2 resolution;
@@ -193,6 +208,11 @@ val MarbledTexture = RuntimeShader(
     """
 )
 
+/**
+ * Messing around from other shaders here plus other references:
+ * - https://lygia.xyz/
+ * - https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83 by patriciogonzalezvivo
+ */
 val SketchingPaperTexture = RuntimeShader(
     """
         uniform float2 resolution;
@@ -263,6 +283,10 @@ val SketchingPaperTexture = RuntimeShader(
     """
 )
 
+
+/**
+ * Messing around from other shaders here, plus ChatGPT!
+ */
 val PaperTexture = RuntimeShader(
     """
     uniform float2 resolution;

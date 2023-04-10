@@ -2,6 +2,9 @@ package com.goofy.goober.shaders
 
 import android.graphics.RuntimeShader
 
+/**
+ * Shadertoy's default shader
+ */
 val GradientShader = RuntimeShader(
     """
         uniform float2 resolution;
@@ -20,6 +23,9 @@ val GradientShader = RuntimeShader(
     """
 )
 
+/**
+ * From: https://shaders.skia.org/?id=de2a4d7d893a7251eb33129ddf9d76ea517901cec960db116a1bbd7832757c1f
+ */
 val NoodleZoomShader = RuntimeShader(
     """
         uniform float2 resolution;
@@ -44,7 +50,9 @@ val NoodleZoomShader = RuntimeShader(
     """
 )
 
-
+/**
+ * From: https://www.shadertoy.com/view/4tjSDt
+ */
 val WarpSpeedShader = RuntimeShader(
     """
         // 'Warp Speed 2'
@@ -79,6 +87,9 @@ val WarpSpeedShader = RuntimeShader(
 )
 
 
+/**
+ * From https://www.shadertoy.com/view/WtBXWw
+ */
 val LightScatteringShader = RuntimeShader(
     """
         uniform float2 resolution;      // Viewport resolution (pixels)
