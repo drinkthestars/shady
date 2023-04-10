@@ -39,7 +39,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-private val LargeCardShape = RoundedCornerShape(12.dp)
+val LargeCardShape = RoundedCornerShape(12.dp)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -73,6 +73,7 @@ fun LargeCard(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
+                    modifier = Modifier.fillMaxWidth(0.6f),
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurface,
                     text = title

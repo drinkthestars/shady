@@ -1,16 +1,18 @@
+package com.goofy.goober.shaders
+
 import android.graphics.RuntimeShader
 
 val GradientShader = RuntimeShader(
     """
         uniform float2 resolution;
-        uniform float iTime;
+        uniform float time;
         
         vec4 main(vec2 fragCoord) {
             // Normalized pixel coordinates (from 0 to 1)
             vec2 uv = fragCoord/resolution.xy;
     
             // Time varying pixel color
-            vec3 col = 0.8 + 0.2 * cos(iTime*2.0+uv.xxx*2.0+vec3(1,2,4));
+            vec3 col = 0.8 + 0.2 * cos(time*2.0+uv.xxx*2.0+vec3(1,2,4));
     
             // Output to screen
             return vec4(col,1.0);
@@ -21,11 +23,11 @@ val GradientShader = RuntimeShader(
 val NoodleZoomShader = RuntimeShader(
     """
         uniform float2 resolution;
-        uniform float iTime;
+        uniform float time;
 
         // Source: @notargs https://twitter.com/notargs/status/1250468645030858753
         float f(vec3 p) {
-            p.z -= iTime * 10.;
+            p.z -= time * 10.;
             float a = p.z * .1;
             p.xy *= mat2(cos(a), sin(a), -sin(a), cos(a));
             return .1 - length(cos(p.xy) + sin(p.yz));
@@ -52,13 +54,13 @@ val WarpSpeedShader = RuntimeShader(
         // Fork of:-   https://www.shadertoy.com/view/Msl3WH
         //----------------------------------------------------------------------------------------
         uniform float2 resolution;      // Viewport resolution (pixels)
-        uniform float  iTime;            // Shader playback time (s)
+        uniform float  time;            // Shader playback time (s)
 
         vec4 main( in float2 fragCoord )
         {
             float s = 0.0, v = 0.0;
             vec2 uv = (fragCoord / resolution.xy) * 2.0 - 1.;
-            float time = (iTime-2.0)*58.0;
+            float time = (time-2.0)*58.0;
             vec3 col = vec3(0);
             vec3 init = vec3(sin(time * .0032)*.3, .35 - cos(time * .005)*.3, time * 0.002);
             for (int r = 0; r < 100; r++) 
@@ -80,8 +82,8 @@ val WarpSpeedShader = RuntimeShader(
 val LightScatteringShader = RuntimeShader(
     """
         uniform float2 resolution;      // Viewport resolution (pixels)
-        uniform float  iTime;            // Shader playback time (s)
-        uniform float4 iMouse;           // Mouse drag pos=.xy Click pos=.zw (pixels)
+        uniform float  time;            // Shader playback time (s)
+        uniform float2 iMouse;           // Mouse drag pos=.xy Click pos=.zw (pixels)
         
         //Based on Naty Hoffmann and Arcot J. Preetham. Rendering out-door light scattering in real time.
         //http://renderwonk.com/publications/gdm-2002/GDM_August_2002.pdf
