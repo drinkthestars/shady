@@ -1,25 +1,18 @@
 package com.goofy.goober.shady.animated
 
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.text.style.TextDirection.Companion.Content
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.goofy.goober.shady.ui.Content
+import androidx.compose.material3.Text
+import androidx.navigation.NavGraphBuilder
+import com.goofy.goober.shady.ui.DestinationScreen
 import com.goofy.goober.shady.ui.HomeScreens
-import com.goofy.goober.shady.ui.Scaffold
 import com.goofy.goober.shady.ui.Screen
+import com.goofy.goober.shady.ui.nestedContent
 
 private val Screens = listOf(
-    Screen("Gradient") { },
+    DestinationScreen(title = "Animated", description = "") {
+        Text("COMING SOON")
+    },
 )
 
-@Composable
-fun AnimatedShaders() {
-    val navController = rememberNavController()
-
-    Content(
-        home = HomeScreens.AnimatedShaders,
-        screens = Screens,
-        navController = navController
-    )
+fun NavGraphBuilder.animatedShadersGraph(onNavigate: (Screen) -> Unit) {
+    nestedContent(onNavigate, screens = Screens, home = HomeScreens.AnimatedShaders)
 }

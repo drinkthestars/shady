@@ -46,8 +46,8 @@ private val LargeCardShape = RoundedCornerShape(12.dp)
 fun LargeCard(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
-    title: String = "Title",
-    subtitle: String = "Subtitle"
+    title: String,
+    subtitle: String? = null
 ) {
     ElevatedCard(
         modifier = modifier
@@ -77,12 +77,15 @@ fun LargeCard(
                     color = MaterialTheme.colorScheme.onSurface,
                     text = title
                 )
-                Spacer(Modifier.height(12.dp))
-                Text(
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    text = subtitle
-                )
+                if (subtitle != null) {
+                    Spacer(Modifier.height(12.dp))
+                    Text(
+                        modifier = Modifier.fillMaxWidth(0.6f),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        text = subtitle
+                    )
+                }
             }
             Icon(
                 modifier = Modifier.padding(end = 12.dp),
@@ -99,7 +102,7 @@ fun LargeCard(
 fun SmallCard(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
-    title: String = "Title"
+    title: String
 ) {
     ElevatedCard(
         modifier = modifier
@@ -231,11 +234,11 @@ fun SmallCardColumnPreview() {
             verticalArrangement = Arrangement.Center
         ) {
             Spacer(Modifier.size(0.dp, 12.dp))
-            SmallCard()
+            SmallCard(title = "Title 1")
             Spacer(Modifier.size(0.dp, 12.dp))
-            SmallCard()
+            SmallCard(title = "Title 2")
             Spacer(Modifier.size(0.dp, 12.dp))
-            SmallCard()
+            SmallCard(title = "Title 3")
             Spacer(Modifier.size(0.dp, 12.dp))
         }
     }
@@ -253,11 +256,11 @@ fun LargeCardColumnPreview() {
             verticalArrangement = Arrangement.Center
         ) {
             Spacer(Modifier.size(0.dp, 12.dp))
-            LargeCard(Modifier.size(360.dp, 100.dp))
+            LargeCard(Modifier.size(360.dp, 100.dp), title = "Title 1")
             Spacer(Modifier.size(0.dp, 12.dp))
-            LargeCard(Modifier.size(360.dp, 100.dp))
+            LargeCard(Modifier.size(360.dp, 100.dp), title = "Title 2")
             Spacer(Modifier.size(0.dp, 12.dp))
-            LargeCard(Modifier.size(360.dp, 100.dp))
+            LargeCard(Modifier.size(360.dp, 100.dp), title = "Title 3")
             Spacer(Modifier.size(0.dp, 12.dp))
         }
     }
