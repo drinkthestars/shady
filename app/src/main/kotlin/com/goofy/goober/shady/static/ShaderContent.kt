@@ -54,9 +54,9 @@ fun MarbledTexture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-            Slider()
-            Spacer(modifier = Modifier.height(24.dp))
-            Slider()
+//            Slider()
+//            Spacer(modifier = Modifier.height(24.dp))
+//            Slider()
         }
     )
 }
@@ -89,9 +89,9 @@ fun PaperTexture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-            Slider()
-            Spacer(modifier = Modifier.height(24.dp))
-            Slider()
+//            Slider()
+//            Spacer(modifier = Modifier.height(24.dp))
+//            Slider()
         }
     )
 }
@@ -124,9 +124,9 @@ fun NoiseGrain2Texture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-            Slider()
-            Spacer(modifier = Modifier.height(24.dp))
-            Slider()
+//            Slider()
+//            Spacer(modifier = Modifier.height(24.dp))
+//            Slider()
         }
     )
 }
@@ -159,9 +159,9 @@ fun NoiseGrain1Texture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-            Slider()
-            Spacer(modifier = Modifier.height(24.dp))
-            Slider()
+//            Slider()
+//            Spacer(modifier = Modifier.height(24.dp))
+//            Slider()
         }
     )
 }
@@ -194,9 +194,9 @@ fun RisographTexture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-            Slider()
-            Spacer(modifier = Modifier.height(24.dp))
-            Slider()
+//            Slider()
+//            Spacer(modifier = Modifier.height(24.dp))
+//            Slider()
         }
     )
 }
@@ -229,9 +229,9 @@ fun SketchingPaperTexture(modifier: Modifier = Modifier) {
             )
         },
         controls = {
-            Slider()
-            Spacer(modifier = Modifier.height(24.dp))
-            Slider()
+//            Slider()
+//            Spacer(modifier = Modifier.height(24.dp))
+//            Slider()
         }
     )
 }
