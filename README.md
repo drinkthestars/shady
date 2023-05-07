@@ -6,9 +6,12 @@ Shady is a gallery of [AGSL](https://developer.android.com/develop/ui/views/grap
 
 These shaders range from entertaining to practical, suitable for standalone effects or as a foundation for generative art and visualizations. Some shaders are ported from Shadertoy or adapted from GLSL, while others originated in SkSL and were slightly modified for AGSL.
 
-|  |  |
-|--|--|
+| | |
+|-|-|
 <img src="docs/assets/home-screen.png"/> | <img src="docs/assets/texture1-screen.png"/>
+
+| | |
+|-|-|
 <video src="docs/assets/paper-texture2-demo.mp4"/> | <video src="docs/assets/skia-sample-animated.mp4"/>
 
 
@@ -207,7 +210,7 @@ Modifier.graphicsLayer {
 }
 ```
 
-In the AGSL shader, you'd then declare a `uniform shader image`, where "image" maps the input you have to `RenderEffect.createRuntimeShaderEffect()`. This declaration treats the contents of your Composable as another incoming shader. Both AGSL and Skia, use the [`.eval()` method](https://skia.org/docs/user/sksl/#evaluating-sampling-other-skshaders) to evaluate other shaders.
+In the AGSL shader, you'd then declare a `uniform shader image`, where "image" maps the input you have to `RenderEffect.createRuntimeShaderEffect()`. This declaration treats the contents of your Composable as another incoming shader. Both AGSL and Skia use the [`.eval()` method](https://skia.org/docs/user/sksl/#evaluating-sampling-other-skshaders) to evaluate other shaders.
 
 In the example below, the "image" uniform is used to sample the incoming image and swap the red and blue channels:
 
@@ -245,7 +248,7 @@ Contributions are welcome and encouraged! If you have an AGSL shader that you'd 
 - [Shadertoy](https://www.shadertoy.com/)
 - [shaders.skia.org](https://shaders.skia.org/) - best place to debug SkSL shaders
 - [The Book of Shaders](https://thebookofshaders.com/) - best resource to learn about shaders
-- Awesome articles detailing RenderEffects in [Jetpack Compose](https://medium.com/androiddevelopers/making-jellyfish-move-in-compose-animating-imagevectors-and-applying-agsl-rendereffects-3666596a8888) and [Compose Desktop](https://www.pushing-pixels.org/2022/04/09/shader-based-render-effects-in-compose-desktop-with-skia.html)
+- Awesome articles detailing `RenderEffect`s in [Jetpack Compose](https://medium.com/androiddevelopers/making-jellyfish-move-in-compose-animating-imagevectors-and-applying-agsl-rendereffects-3666596a8888) and [Compose Desktop](https://www.pushing-pixels.org/2022/04/09/shader-based-render-effects-in-compose-desktop-with-skia.html)
 
 ## Licenses
 
