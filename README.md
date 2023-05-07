@@ -6,9 +6,10 @@ Shady is a gallery of [AGSL](https://developer.android.com/develop/ui/views/grap
 
 These shaders range from entertaining to practical, suitable for standalone effects or as a foundation for generative art and visualizations. Some shaders are ported from Shadertoy or adapted from GLSL, while others originated in SkSL and were slightly modified for AGSL.
 
-| | |
-|-|-|
-<img src="docs/assets/home-screen.png"/> | <img src="docs/assets/texture1-screen.png"/>
+| | | |
+|-|-|-|
+<img src="docs/assets/home-screen.png" width=250/> | <img src="docs/assets/textures-screen.png" width=250/> | <img src="docs/assets/texture1-screen.png" width=250/>
+
 
 | | |
 |-|-|
