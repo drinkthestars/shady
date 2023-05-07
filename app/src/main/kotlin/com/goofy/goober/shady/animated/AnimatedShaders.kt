@@ -42,7 +42,7 @@ fun GradientShader(modifier: Modifier = Modifier) {
     val brush = remember { ShaderBrush(GradientShader) }
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         SketchWithCache(
-            speed = 6f,
+            speed = 1f,
             modifier = modifier.fillMaxSize(0.8f).clip(LargeCardShape)
         ) { time ->
             GradientShader.setFloatUniform(
@@ -62,7 +62,7 @@ fun SkiaSampleShader(modifier: Modifier = Modifier) {
     val brush = remember { ShaderBrush(NoodleZoomShader) }
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         SketchWithCache(
-            speed = 2f,
+            speed = 1f,
             modifier = modifier.fillMaxSize(0.8f).clip(LargeCardShape)
         ) { time ->
             NoodleZoomShader.setFloatUniform(

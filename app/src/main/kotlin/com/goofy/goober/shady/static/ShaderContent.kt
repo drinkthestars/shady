@@ -49,7 +49,7 @@ fun MarbledTexture(modifier: Modifier = Modifier) {
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
                                 MarbledTexture,
-                                "contents"
+                                "image"
                             )
                             .asComposeRenderEffect()
                     },
@@ -89,7 +89,7 @@ fun PaperTexture(modifier: Modifier = Modifier) {
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
                                 PaperTexture,
-                                "contents"
+                                "image"
                             )
                             .asComposeRenderEffect()
                     },
@@ -143,7 +143,7 @@ fun NoiseGrain2Texture(modifier: Modifier = Modifier) {
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
                                 NoiseGrain2,
-                                "contents"
+                                "image"
                             )
                             .asComposeRenderEffect()
                     },
@@ -188,7 +188,7 @@ fun NoiseGrain1Texture(modifier: Modifier = Modifier) {
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
                                 NoiseGrain1,
-                                "contents"
+                                "image"
                             )
                             .asComposeRenderEffect()
                     },
@@ -235,7 +235,7 @@ fun RisographTexture(modifier: Modifier = Modifier) {
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
                                 Risograph,
-                                "contents"
+                                "image"
                             )
                             .asComposeRenderEffect()
                     },
@@ -281,9 +281,9 @@ fun SketchingPaperTexture(modifier: Modifier = Modifier) {
                     .fillMaxSize()
                     .onSizeChanged { size ->
                         SketchingPaperTexture.setFloatUniform(
-                            "resolution",
-                            size.width.toFloat(),
-                            size.height.toFloat()
+                            /* uniformName = */ "resolution",
+                            /* value1 = */ size.width.toFloat(),
+                            /* value2 = */ size.height.toFloat()
                         )
                     }
                     .graphicsLayer {
@@ -292,8 +292,8 @@ fun SketchingPaperTexture(modifier: Modifier = Modifier) {
                         SketchingPaperTexture.setFloatUniform("contrast2", contrast2)
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(
-                                SketchingPaperTexture,
-                                "contents"
+                                /* shader = */ SketchingPaperTexture,
+                                /* uniformShaderName = */ "image"
                             )
                             .asComposeRenderEffect()
                     },

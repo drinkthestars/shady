@@ -46,6 +46,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":style"))
+
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.kotlin)

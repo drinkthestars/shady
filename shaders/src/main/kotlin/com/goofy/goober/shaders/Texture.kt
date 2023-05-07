@@ -9,7 +9,7 @@ import org.intellij.lang.annotations.Language
 val NoiseGrain1 = RuntimeShader(
     """
     uniform float2 resolution;
-    uniform shader contents; 
+    uniform shader image; 
     uniform float intensity;
     
     vec4 main( vec2 fragCoord )
@@ -18,12 +18,12 @@ val NoiseGrain1 = RuntimeShader(
         
         // Check if pixel is inside viewport bounds
         if (fragCoord.x < 0.0 || fragCoord.x > resolution.x || fragCoord.y < 0.0 || fragCoord.y > resolution.y) {
-            return vec4(contents.eval(fragCoord));
+            return vec4(image.eval(fragCoord));
         }
 
         float mdf = -0.8 * intensity; // increase for noise amount 
         float noise = (fract(sin(dot(uv, vec2(12.9898,78.233)*2.0)) * 43758.5453));
-        vec4 tex = vec4(contents.eval(fragCoord));
+        vec4 tex = vec4(image.eval(fragCoord));
         
         mdf *= 1.5;
         
@@ -41,7 +41,7 @@ val NoiseGrain1 = RuntimeShader(
 val NoiseGrain2 = RuntimeShader(
     """
     uniform float2 resolution;
-    uniform shader contents;
+    uniform shader image;
     uniform float intensity;
     
     float random( vec2 p )
@@ -59,13 +59,13 @@ val NoiseGrain2 = RuntimeShader(
         
         // Check if pixel is inside viewport bounds
         if (fragCoord.x < 0.0 || fragCoord.x > resolution.x || fragCoord.y < 0.0 || fragCoord.y > resolution.y) {
-            return vec4(contents.eval(fragCoord));
+            return vec4(image.eval(fragCoord));
         }
         
         vec2 uvRandom = uv;
         float amount = 0.2;
         uvRandom.y *= random(vec2(uvRandom.y,amount));
-        vec4 tex = vec4(contents.eval(fragCoord));
+        vec4 tex = vec4(image.eval(fragCoord));
         tex.rgb += random(uvRandom)*intensity;
     
         return vec4(tex);
@@ -82,7 +82,7 @@ val NoiseGrain2 = RuntimeShader(
 val Risograph = RuntimeShader(
     """
     uniform float2 resolution;
-    uniform shader contents; 
+    uniform shader image; 
     uniform float randomization;
     uniform float randomizationOffset;
     
@@ -107,13 +107,13 @@ val Risograph = RuntimeShader(
         
         // Check if pixel is inside viewport bounds
         if (fragCoord.x < 0.0 || fragCoord.x > resolution.x || fragCoord.y < 0.0 || fragCoord.y > resolution.y) {
-            return vec4(contents.eval(fragCoord));
+            return vec4(image.eval(fragCoord));
         }
         
         vec2 uvRandom = uv;
         float amount = 0.8;
         uvRandom.y *= noise(vec2(uvRandom.y,amount));
-        vec4 tex = vec4(contents.eval(fragCoord));
+        vec4 tex = vec4(image.eval(fragCoord));
         vec4 originalTex = tex;
         tex.rgb += random(uvRandom) * randomization + randomizationOffset;
       
@@ -137,7 +137,7 @@ val Risograph = RuntimeShader(
 val MarbledTexture = RuntimeShader(
     """
         uniform float2 resolution;
-        uniform shader contents; 
+        uniform shader image; 
       
         float mod289(float x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
         float2 mod289(float2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -184,7 +184,7 @@ val MarbledTexture = RuntimeShader(
           vec2 uv = fragCoord.xy / resolution.xy;
         
             if (fragCoord.x < 0.0 || fragCoord.x > resolution.x || fragCoord.y < 0.0 || fragCoord.y > resolution.y) {
-                return contents.eval(fragCoord);
+                return image.eval(fragCoord);
             }
         
             half4 grain = half4(snoise(fragCoord * 0.1) * 0.1 + 0.5);
@@ -201,7 +201,7 @@ val MarbledTexture = RuntimeShader(
                 randomFibers = half4(0.2, 0.2, 0.2, 1.0);
             }
         
-            half4 baseColor = contents.eval(fragCoord);
+            half4 baseColor = image.eval(fragCoord);
             half4 combinedNoise = baseColor + grain * 0.05 + fiber * 0.1 + randomSpecs + randomFibers;
             return mix(baseColor, combinedNoise, 0.8);
         }
@@ -216,7 +216,7 @@ val MarbledTexture = RuntimeShader(
 val SketchingPaperTexture = RuntimeShader(
     """
         uniform float2 resolution;
-        uniform shader contents; 
+        uniform shader image; 
         uniform float contrast1;
         uniform float contrast2;
         uniform float amount; // 0.15
@@ -260,9 +260,9 @@ val SketchingPaperTexture = RuntimeShader(
         half4 main( vec2 fragCoord )  {
             vec2 uv = fragCoord.xy / resolution.xy;
             if (fragCoord.x < 0.0 || fragCoord.x > resolution.x || fragCoord.y < 0.0 || fragCoord.y > resolution.y) {
-                return contents.eval(fragCoord);
+                return image.eval(fragCoord);
             }
-            half4 baseColor = contents.eval(fragCoord);
+            half4 baseColor = image.eval(fragCoord);
         
             // Generate Simplex noise
             float noise = snoise(uv * 200.0) * 0.5 + 0.5;
@@ -290,7 +290,7 @@ val SketchingPaperTexture = RuntimeShader(
 val PaperTexture = RuntimeShader(
     """
     uniform float2 resolution;
-    uniform shader contents; 
+    uniform shader image; 
     uniform float grainIntensity; // 0.05
     uniform float fiberIntensity; // 0.5
 
@@ -304,7 +304,7 @@ val PaperTexture = RuntimeShader(
       
       // Check if pixel is inside viewport bounds
       if (fragCoord.x < 0.0 || fragCoord.x > resolution.x || fragCoord.y < 0.0 || fragCoord.y > resolution.y) {
-          return vec4(contents.eval(fragCoord));
+          return vec4(image.eval(fragCoord));
       }
       
       vec4 grain = vec4(noise2(uv * 12.0).r - 0.5);
@@ -327,7 +327,7 @@ val PaperTexture = RuntimeShader(
         squigglyFibers = vec4(1.0, 1.0, 1.0, fiberThickness);
       }
       
-      return min(vec4(contents.eval(fragCoord)) 
+      return min(vec4(image.eval(fragCoord)) 
         + grain * grainIntensity
         + fiber * fiberIntensity
         + randomSpecs, squigglyFibers);
