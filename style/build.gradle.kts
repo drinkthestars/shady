@@ -1,4 +1,5 @@
 @file:Suppress("UnstableApiUsage")
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 
 plugins {
@@ -8,11 +9,11 @@ plugins {
 
 android {
     namespace = "com.goofy.goober.style"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 33
-        targetSdk = 33
+        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

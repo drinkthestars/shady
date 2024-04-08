@@ -1,23 +1,23 @@
 [versions]
-accompanist= "0.29.1-alpha"
-android-gradle-plugin = "7.4.0"
-androidx-activity-compose = "1.6.1"
+accompanist= "0.31.3-beta"
+android-gradle-plugin = "8.0.2"
+androidx-activity-compose = "1.8.2"
 androidx-appcompat = "1.6.1"
-androidx-corektx = "1.10.0-alpha02"
-androidx-lifecycle = "2.6.0-beta01"
-androidx-navigation = "2.5.3"
-androidx-hilt-navigation-compose = "1.0.0"
+androidx-corektx = "1.12.0"
+androidx-lifecycle = "2.7.0"
+androidx-navigation = "2.7.7"
+androidx-hilt-navigation-compose = "1.1.0-alpha01"
 
 build-tools = "30.0.3"
 
-compileSdk = "33"
-compose = "1.4.0-alpha02"
-composeCompiler = "1.4.2"
-kotlin = "1.8.10"
-coroutines = "1.6.4"
+compileSdk = "34"
+compose = "1.7.0-alpha06"
+composeCompiler = "1.5.11"
+kotlin = "1.9.23"
+coroutines = "1.7.3"
 
-material = "1.9.0-alpha01"
-compose-material3 = "1.1.0-alpha06"
+material = "1.11.0"
+compose-material3 = "1.2.1"
 
 [libraries]
 compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
@@ -34,7 +34,7 @@ compose-animation-animation = { module = "androidx.compose.animation:animation",
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-corektx" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
-androidx-fragment = "androidx.fragment:fragment-ktx:1.5.1"
+androidx-fragment = "androidx.fragment:fragment-ktx:1.5.7"
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
