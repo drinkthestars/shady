@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
+import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.CacheDrawScope
@@ -23,9 +24,10 @@ import com.goofy.goober.style.Space
 @Composable
 fun produceDrawLoopCounter(speed: Float = 1f): State<Float> {
     return produceState(0f) {
+        val firstFrame: Long = withFrameMillis { it }
         while (true) {
             withInfiniteAnimationFrameMillis {
-                value = it / 1000f * speed
+                value = (it - firstFrame) * speed / 1000f
             }
         }
     }
