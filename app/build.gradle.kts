@@ -4,13 +4,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
 }
 
 val appId = "com.goofy.goober.shady"
 
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
-    buildToolsVersion = libs.versions.build.tools.get()
     namespace = appId
 
     defaultConfig {
@@ -41,10 +41,6 @@ android {
 
     buildFeatures {
         compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 
     android.sourceSets.all {

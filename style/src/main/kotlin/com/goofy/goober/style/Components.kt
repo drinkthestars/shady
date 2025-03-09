@@ -23,11 +23,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowRight
 import androidx.compose.material3.CardDefaults.elevatedCardElevation
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
@@ -90,7 +89,7 @@ fun LargeCard(
             }
             Icon(
                 modifier = Modifier.padding(end = 12.dp),
-                imageVector = Icons.Filled.ArrowRight,
+                imageVector = Icons.AutoMirrored.Filled.ArrowRight,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurface
             )
@@ -128,7 +127,7 @@ fun SmallCard(
             )
             Icon(
                 modifier = Modifier.padding(end = Space.Five),
-                imageVector = Icons.Filled.ArrowRight,
+                imageVector = Icons.AutoMirrored.Filled.ArrowRight,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurface
             )
@@ -158,7 +157,7 @@ fun ShadyContainer(
                 .background(color = MaterialTheme.colorScheme.surfaceVariant),
             content = content
         )
-        Divider(
+        HorizontalDivider(
             Modifier
                 .fillMaxWidth()
                 .padding(vertical = Space.Five)
