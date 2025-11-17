@@ -137,9 +137,10 @@ To create animated shaders, you need to incorporate a time variable. Shady offer
 @Composable
 fun produceDrawLoopCounter(speed: Float = 1f): State<Float> {
     return produceState(0f) {
+        val firstFrame: Long = withFrameMillis { it }
         while (true) {
             withInfiniteAnimationFrameMillis {
-                value = it / 1000f * speed
+                value = (it - firstFrame) * speed / 1000f
             }
         }
     }
